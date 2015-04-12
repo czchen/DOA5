@@ -7,6 +7,7 @@ var mocha = require('gulp-mocha');
 
 gulp.task('jshint', function () {
     return gulp.src([
+                    'src/**/*.es6',
                     'gulpfile.js',
                 ])
                .pipe(jshint('.jshintrc'))
