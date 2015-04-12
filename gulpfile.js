@@ -4,6 +4,7 @@ var babel = require('gulp-babel');
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var mocha = require('gulp-mocha');
+var runSequence = require('run-sequence');
 
 gulp.task('jshint', function () {
     return gulp.src([
@@ -22,7 +23,13 @@ gulp.task('compile', function () {
                .pipe(gulp.dest('.'));
 });
 
-gulp.task('test', function () {
+gulp.task('test:mocha', function () {
     return gulp.src('package.json', {read: false})
                .pipe(mocha());
 });
+
+gulp.task('test', function (cb) {
+    runSequence('test:mocha', 'jshint', cb);
+});
+
+gulp.task('prepublish', ['compile']);
