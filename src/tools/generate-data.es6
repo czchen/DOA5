@@ -6,7 +6,8 @@ import yargs from 'yargs';
 let logger = bunyanBlackhole();
 
 const main = () => {
-    const argv = yargs.usage('Usage $0 [-v | --verbose] [-h | --help]')
+    const argv = yargs.usage('Convert command format from <http://deadoralive.wikia.com/wiki/Dead_or_Alive_Wiki>.\n\n' +
+                             'usage: $0 [-v | --verbose] [-h | --help]')
                 .boolean(['v'])
                 .help('h')
                 .alias('h', 'help')
