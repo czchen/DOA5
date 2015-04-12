@@ -1,8 +1,13 @@
 {
   "name": "DOA5",
   "version": "0.0.1",
-
+  "scripts": {
+    "test": "node_modules/.bin/gulp test"
+  },
   "devDependencies": {
-    "babel": "^5.0.12"
+    "babel": "^5.0.12",
+    "gulp": "^3.8.11",
+    "gulp-mocha": "^2.0.1",
+    "mocha": "^2.2.4"
   }
 }
