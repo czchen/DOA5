@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import bunyan from 'bunyan';
 import bunyanBlackhole from 'bunyan-blackhole';
 import yargs from 'yargs';
@@ -5,7 +6,7 @@ import yargs from 'yargs';
 let logger = bunyanBlackhole();
 
 const main = () => {
-    argv = yargs.usage('Usage $0 [-v | --verbose] [-h | --help]')
+    const argv = yargs.usage('Usage $0 [-v | --verbose] [-h | --help]')
                 .boolean(['v'])
                 .help('h')
                 .alias('h', 'help')
