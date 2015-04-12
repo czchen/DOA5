@@ -7,9 +7,19 @@ import yargs from 'yargs';
 
 let logger = bunyanBlackhole();
 
-const convertCommand = (command) => {
-    logger.trace({command: command}, 'convertCommand');
-    return command;
+const convertCommand = (cmd) => {
+    logger.trace({cmd: cmd}, 'convertCommand');
+
+    let res = [];
+
+    if (cmd.startswith('Punch Button')) {
+        cmd = cmd.substr(0, 'Punch Button');
+        res.push('P');
+    } else {
+        throw Error(`Unknown command: ${command}`);
+    }
+
+    return res;
 };
 
 const main = () => {

@@ -3,8 +3,8 @@
 var babel = require('gulp-babel');
 var gulp = require('gulp');
 var jshint = require('gulp-jshint');
-var mocha = require('gulp-mocha');
 var runSequence = require('run-sequence');
+var shell = require('gulp-shell');
 
 gulp.task('jshint', function () {
     return gulp.src([
@@ -18,6 +18,7 @@ gulp.task('jshint', function () {
 gulp.task('compile', function () {
     return gulp.src([
                     'src/**/*.es6',
+                    'test/**/*.es6',
                 ], {base: 'src'})
                .pipe(babel())
                .pipe(gulp.dest('.'));
@@ -25,7 +26,7 @@ gulp.task('compile', function () {
 
 gulp.task('test:mocha', function () {
     return gulp.src('package.json', {read: false})
-               .pipe(mocha());
+               .pipe(shell('node_modules/.bin/mocha'));
 });
 
 gulp.task('test', function (cb) {
